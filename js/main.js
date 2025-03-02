@@ -22,8 +22,16 @@ function handleDrop(e) {
     e.preventDefault();
     console.log(`dropped something on me`);
 
+    //add code to check if there is dragged piece already in the drop zone with if/else
 
-    this.appendChild(draggedPiece);
+    if (this.firstElementChild) {
+        console.log("This drop zone is already taken!");
+    }
+    else {
+        this.appendChild(draggedPiece);
+    }
+
+
 }
 
 theButtons.forEach(button => button.addEventListener('click', changeBGImage));
@@ -33,3 +41,16 @@ puzzlePieces.forEach(piece => piece.addEventListener('dragstart', handleStartDra
 dropZones.forEach(zone => zone.addEventListener('dragover', handleDragOver));
 
 dropZones.forEach(zone => zone.addEventListener('drop', handleDrop));
+
+// reset button
+let resetButton = document.querySelector("#resetBut");
+
+// function to reset the puzzle pieces
+function resetPuzzle() {
+    puzzlePieces.forEach(piece => {
+        document.querySelector(".puzzle-pieces").appendChild(piece);
+    });
+}
+
+// listen the event
+resetButton.addEventListener("click", resetPuzzle);

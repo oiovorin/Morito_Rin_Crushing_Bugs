@@ -47,8 +47,11 @@ let resetButton = document.querySelector("#resetBut");
 
 // function to reset the puzzle pieces
 function resetPuzzle() {
+    console.log('reset the puzzle');
+
     puzzlePieces.forEach(piece => {
         document.querySelector(".puzzle-pieces").appendChild(piece);
+        
     });
 }
 

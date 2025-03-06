@@ -43,7 +43,8 @@ dropZones.forEach(zone => zone.addEventListener('dragover', handleDragOver));
 dropZones.forEach(zone => zone.addEventListener('drop', handleDrop));
 
 // reset button
-let resetButton = document.querySelector("#resetBut");
+let resetButtons = document.querySelectorAll("#resetBut, #buttonHolder");
+
 
 // function to reset the puzzle pieces
 function resetPuzzle() {
@@ -55,5 +56,11 @@ function resetPuzzle() {
     });
 }
 
-// listen the event
-resetButton.addEventListener("click", resetPuzzle);
+
+
+// listen the event with forEach because there are two id works for this
+
+resetButtons.forEach(button => {
+    button.addEventListener("click", resetPuzzle);
+});
+
